@@ -373,9 +373,14 @@ module.exports = function (grunt) {
       ],
       dist: [
         'compass:dist',
-        'imagemin',
+        // commento temporaneamente
+        //'imagemin',
         'svgmin'
-      ]
+      ],
+      options: {
+        limit: 5,
+        logConcurrentOutput: true
+      }
     },
 
     // Test settings
@@ -425,7 +430,8 @@ module.exports = function (grunt) {
     'concat',
     'ngAnnotate',
     'copy:dist',
-    'cdnify',
+    // commento temporaneamente
+    //'cdnify',
     'cssmin',
     'uglify',
     'filerev',
