@@ -373,8 +373,7 @@ module.exports = function (grunt) {
       ],
       dist: [
         'compass:dist',
-        // commento temporaneamente
-        //'imagemin',
+        'imagemin',
         'svgmin'
       ],
       options: {
@@ -430,8 +429,7 @@ module.exports = function (grunt) {
     'concat',
     'ngAnnotate',
     'copy:dist',
-    // commento temporaneamente
-    //'cdnify',
+    'cdnify',
     'cssmin',
     'uglify',
     'filerev',

@@ -1,9 +1,10 @@
 <div class="row">
   <div class="col-lg-6">
-    <p>Vediamo cosa succede usando l'elemento DIV</p>
+    <p>Vediamo cosa succede utilizzando l'elemento DIV</p>
     <table class="table table-striped">
       <thead>
         <tr>
+          <th>Id</th>
           <th>Cognome</th>
           <th>Nome</th>
           <th>Numero Telefono</th>
@@ -11,17 +12,12 @@
         </tr>
       </thead>
       <tbody>
-       <tr>
-         <td>Marchese</td>
-         <td>Marco</td>
-         <td>345/67867867</td>
-         <td>marco.marchese@sanita.padova.it</td>
-       </tr>
-       <tr>
-         <td>Marchese</td>
-         <td>Marco</td>
-         <td>345/67867867</td>
-         <td>marco.marchese@sanita.padova.it</td>
+       <tr ng-repeat="data in allPatientsData">
+         <td>{{data.ass_ipca}}</td>
+         <td>{{data.ass_cogn}}</td>
+         <td>{{data.ass_nome}}</td>
+         <td>{{data.ass_tel}}</td>
+         <td>{{data.ass_email}}</td>
        </tr>
       </tbody>
     </table>
