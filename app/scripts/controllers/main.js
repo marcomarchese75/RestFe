@@ -15,47 +15,18 @@ angular.module('restFeApp')
       'Karma'
     ];
 
-    $scope.id = null;
-
-    $scope.allPatientsData = MainSrvc.query();
+    $scope.ass_ipca = null;
     $scope.hash = "";
     var payload = {};
 
-    console.log(JSON.stringify($scope.allPatientsData));
+    $scope.allPatientsData = MainSrvc.query();
 
-    $scope.insertedNewRecord = false;
-    $scope.createOrUpdate = function () {
-      var payload = {
-        "ass_cogn": $scope.ass_cogn,
-        "ass_nome": $scope.ass_nome,
-        "ass_tel": $scope.ass_tel,
-        "ass_email": $scope.ass_email
-      };
-      if($scope.ass_ipca != null)
-        payload.ass_ipca= $scope.ass_ipca;
+    //console.log(JSON.stringify($scope.allPatientsData));
 
-      console.log(JSON.stringify(payload));
-
-      $scope.allPatientsData.push(payload);
-      $scope.ass_email = null;
-      $scope.ass_nome = null;
-      $scope.ass_cogn = null;
-      $scope.ass_tel = null;
-
-      console.log(JSON.stringify($scope.allPatientsData));
-    }
-
-    $scope.saveOnDB = function () {
-      MainSrvc.postData({},  $scope.allPatientsData,
-        function (data) {
-          $scope.allPatientsData = MainSrvc.query();
-          $scope.insertedNewRecord = true;
-
-          $timeout(function () {
-            $scope.insertedNewRecord = false;
-          }, 5000);
-        }
-      );
+    $scope.reverse = false;
+    $scope.click = function (name) {
+      $scope.sort = name;
+      $scope.reverse = !$scope.reverse;
     }
 
     $scope.deletedRecord = false;
@@ -72,6 +43,63 @@ angular.module('restFeApp')
       });
     }
 
+    $scope.insertedNewRecord = false;
+    $scope.createOrUpdate = function () {
+      var payload = {
+        "ass_cogn": $scope.ass_cogn,
+        "ass_nome": $scope.ass_nome,
+        "ass_tel": $scope.ass_tel,
+        "ass_email": $scope.ass_email
+      };
+      if($scope.ass_ipca != null)
+        payload.ass_ipca= $scope.ass_ipca;
+
+      console.log(JSON.stringify(payload));
+
+      $scope.allPatientsData.push(payload);
+      // commento provvisoriamente
+      /*$scope.ass_email = null;
+      $scope.ass_nome = null;
+      $scope.ass_cogn = null;
+      $scope.ass_tel = null;*/
+
+      //console.log(JSON.stringify($scope.allPatientsData));
+    }
+
+    $scope.saveOnDB = function (data) {
+      var payload = {
+        "ass_ipca": $scope.ass_ipca,
+        "ass_cogn": $scope.ass_cogn,
+        "ass_nome": $scope.ass_nome,
+        "ass_tel": $scope.ass_tel,
+        "ass_email": $scope.ass_email
+      };
+      console.log(JSON.stringify(payload));
+      MainSrvc.postData({},  payload,//$scope.allPatientsData,
+        function (data) {
+          $scope.allPatientsData = MainSrvc.query();
+          $scope.insertedNewRecord = true;
+
+          $timeout(function () {
+            $scope.insertedNewRecord = false;
+          }, 5000);
+        }
+      );
+    }
+
+    $scope.editRecord = false;
+    $scope.edit = function () {
+      //http://stackoverflow.com/questions/8668174/indexof-method-in-an-object-array
+      var i = arrayObjectIndexOf($scope.allPatientsData, $scope.hash, "$$hashKey");
+      console.log("Indice: "+ i);
+      $scope.allPatientsData.splice(i, 1); //rimuovo l'elemento
+      $scope.createOrUpdate(); //lo aggiungo ex-novo
+      $scope.editRecord = false;
+      // commento provvisoriamente
+      //$scope.ass_ipca = null;
+    }
+
+    $scope.editRecord = false;
     $scope.editItem = function (data) {
       var payload = {
         "ass_ipca": data.ass_ipca,
@@ -89,18 +117,8 @@ angular.module('restFeApp')
       $scope.ass_email=data.ass_email;
 
       console.log("HASH:" + $scope.hash);
-      console.log(JSON.stringify($scope.allPatientsData));
-
-      $scope.editRecord = false;
-      $scope.edit = function () {
-        //http://stackoverflow.com/questions/8668174/indexof-method-in-an-object-array
-        var i = arrayObjectIndexOf($scope.allPatientsData, $scope.hash, "$$hashKey");
-        console.log("Indice: "+ i);
-        $scope.allPatientsData.splice(i, 1); //rimuovo l'elemento
-        $scope.createOrUpdate(); //lo aggiungo ex-novo
-        $scope.editRecord = false;
-        $scope.ass_ipca = null;
-      }
+      //console.log(JSON.stringify($scope.allPatientsData));
+    }
 
       function arrayObjectIndexOf(myArray, searchTerm, property) {
         for(var i = 0, len = myArray.length; i < len; i++) {
@@ -108,7 +126,5 @@ angular.module('restFeApp')
         }
         return -1;
       }
-
-    }
 
   });
