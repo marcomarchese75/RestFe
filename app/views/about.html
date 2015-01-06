@@ -1,1 +1,18 @@
-<p>This is the about view.</p>
+<p>Questa è la view about. Proviamo ad usare le ngTable.</p>
+
+<table ng-table class="table">
+  <tr ng-repeat="data in allPatientsData" ng-controller="AboutCtrl">
+    <td data-title="'Ass_ipca'">{{data.ass_ipca}}</td>
+    <td data-title="'Cognome'">
+    <span ng-if="!data.$edit">{{data.ass_cogn}}</span>
+    <div ng-if="data.$edit"><input class="form-control" type="text" ng-model="data.ass_cogn" /></div>
+    </td>
+    <td data-title="'Nome'">{{data.ass_nome}}</td>
+    <td data-title="'Telefono'">{{data.ass_tel}}</td>
+    <td data-title="'Email'">{{data.ass_email}}</td>
+    <td data-title="'Actions'" width="200">
+      <a ng-if="!data.$edit" href="" class="btn btn-default btn-xs" ng-click="data.$edit = true">Modifica</a>
+      <a ng-if="data.$edit"  href="" class="btn btn-primary btn-xs" ng-click="data.$edit = false">Salva</a>
+    </td>
+  </tr>
+</table>
