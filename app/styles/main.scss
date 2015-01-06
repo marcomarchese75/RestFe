@@ -1,5 +1,5 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-@fa-font-path:   "../fonts/font-awesome-4.2.0/fonts";
+$fa-font-path:   "../fonts/font-awesome-4.2.0/fonts";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
@@ -8,6 +8,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // personalizzazioni scss
 @import "variables.scss";
 //@import "components.scss";
+// fine personalizzazioni scss
 
 // fine personalizzazioni scss
 .browsehappy {

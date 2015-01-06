@@ -2,19 +2,20 @@
 Error: File to import not found or unreadable: bootstrap-sass-official/assets/stylesheets/_bootstrap.scss.
        Load paths:
          
-        on line 3 of main.scss
+        on line 4 of main.scss
 
 1: $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-2: // bower:scss
-3: @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-4: // endbower
-5: @import "../fonts/font-awesome-4.2.0/scss/font-awesome.scss";
-6: 
-7: // personalizzazioni scss
-8: @import "variables.scss";
+2: $fa-font-path:   "../fonts/font-awesome-4.2.0/fonts";
+3: // bower:scss
+4: @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+5: // endbower
+6: @import "../fonts/font-awesome-4.2.0/scss/font-awesome.scss";
+7: 
+8: // personalizzazioni scss
+9: @import "variables.scss";
 
 Backtrace:
-main.scss:3
+main.scss:4
 C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/import_node.rb:66:in `rescue in import'
 C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/import_node.rb:45:in `import'
 C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/import_node.rb:28:in `imported_file'
@@ -57,4 +58,4 @@ C:/Ruby21/bin/scss:23:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: bootstrap-sass-official/assets/stylesheets/_bootstrap.scss.\A        Load paths:\A          \A         on line 3 of main.scss\A \A 1: $icon-font-path: \"../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/\";\A 2: // bower:scss\A 3: @import \"bootstrap-sass-official/assets/stylesheets/_bootstrap.scss\";\A 4: // endbower\A 5: @import \"../fonts/font-awesome-4.2.0/scss/font-awesome.scss\";\A 6: \A 7: // personalizzazioni scss\A 8: @import \"variables.scss\";"; }
+  content: "Error: File to import not found or unreadable: bootstrap-sass-official/assets/stylesheets/_bootstrap.scss.\A        Load paths:\A          \A         on line 4 of main.scss\A \A 1: $icon-font-path: \"../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/\";\A 2: $fa-font-path:   \"../fonts/font-awesome-4.2.0/fonts\";\A 3: // bower:scss\A 4: @import \"bootstrap-sass-official/assets/stylesheets/_bootstrap.scss\";\A 5: // endbower\A 6: @import \"../fonts/font-awesome-4.2.0/scss/font-awesome.scss\";\A 7: \A 8: // personalizzazioni scss\A 9: @import \"variables.scss\";"; }

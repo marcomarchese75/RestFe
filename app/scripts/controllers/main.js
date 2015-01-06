@@ -19,16 +19,19 @@ angular.module('restFeApp')
     $scope.hash = "";
     var payload = {};
 
+    // ok
     $scope.allPatientsData = MainSrvc.query();
 
     //console.log(JSON.stringify($scope.allPatientsData));
 
+    // ok
     $scope.reverse = false;
     $scope.click = function (name) {
       $scope.sort = name;
       $scope.reverse = !$scope.reverse;
     }
 
+    // ok
     $scope.deletedRecord = false;
     $scope.removeItem = function (id) {
       MainSrvc.remove({id: id}, function(){
