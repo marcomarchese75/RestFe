@@ -8,7 +8,10 @@
     <div ng-if="data.$edit"><input class="form-control" type="text" ng-model="data.ass_cogn" /></div>
     </td>
     <td data-title="'Nome'">{{data.ass_nome}}</td>
-    <td data-title="'Telefono'">{{data.ass_tel}}</td>
+    <td data-title="'Telefono'">
+      <span ng-if="!data.$edit">{{data.ass_tel}}</span>
+      <div ng-if="data.$edit"><input class="form-control" type="text" ng-model="data.ass_tel" /></div>
+    </td>
     <td data-title="'Email'">{{data.ass_email}}</td>
     <td data-title="'Actions'" width="200">
       <a ng-if="!data.$edit" href="" class="btn btn-default btn-xs" ng-click="data.$edit = true">Modifica</a>

@@ -2,9 +2,10 @@
 <div class="alert alert-warning" role="alert" ng-show="deletedRecord"><i class="fa fa-thumbs-up"></i> Hai cancellato un record</div>
 
 <div class="row-fluid">
-  <div class="span12">
-  <div class="span8">
+  <div class="col-lg-12">
     <p>Vediamo cosa succede utilizzando l'elemento DIV</p>
+  <div class="col-lg-8">
+
     <table class="table table-striped">
       <thead>
         <tr>
@@ -13,8 +14,8 @@
           <th>Nome</th>
           <th>Numero Telefono</th>
           <th>Email<input ng-model="mailSearch"></th>
-          <th></th> <!-- intestazione del "modifica" -->
-          <th></th> <!-- intestazione del "cancella" -->
+          <th>Modifica</th> <!-- intestazione del "modifica" -->
+          <th>Cancella</th> <!-- intestazione del "cancella" -->
         </tr>
       </thead>
       <tbody>
@@ -31,13 +32,14 @@
     </table>
   </div>
 
-  <div class="span4">
-    <form class="form-horizontal" role="form">
+  <div class="col-lg-4">
+    <form name="AnagData" class="form-horizontal" role="form" >
       <div class="form-group">
         <label for="ass_cogn" class="col-sm-2 control-label">Cognome</label>
 
         <div class="col-sm-10">
-          <input type="input" class="form-control" id="ass_cogn" placeholder="Cognome" ng-model="ass_cogn">
+          <input type="input" name="ass_cogn" class="form-control" id="ass_cogn" placeholder="Cognome" ng-model="ass_cogn" required>
+          <span class="error" ng-show="AnagData.ass_cogn.$error.required">Il campo cognome è obbligatorio!</span>
         </div>
       </div>
       <div class="form-group">
@@ -50,9 +52,12 @@
       <div class="form-group">
         <label for="ass_tel" class="col-sm-2 control-label">Telefono</label>
 
-        <div class="col-sm-10">
+        <select data-ng-model="data.ass_tel"
+                data-ng-options="data.ass_tel for data in allPatientsData">
+        </select>
+        <!--<div class="col-sm-10">
           <input type="input" class="form-control" id="ass_tel" placeholder="Telefono" ng-model="ass_tel">
-        </div>
+        </div>-->
       </div>
       <div class="form-group">
         <label for="ass_email" class="col-sm-2 control-label">Email</label>
@@ -76,3 +81,18 @@
   </div>
 </div>
  </div>
+
+<div ng-controller="DropdownCtrl">
+<div class="btn-group" dropdown is-open="status.isopen">
+  <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+    Button dropdown <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+</div>
